@@ -6,26 +6,26 @@ using MyAccount.Domain.Validation;
 
 namespace MyAccount.Tests.Unity.Entities
 {
-	public class SocialAccountEntityTest
-	{
-		[Fact]
-		public void CreateSocialAccount_WithValidParams_ResultObjectValidState()
-		{
-			var guid = Guid.NewGuid();
-			var userUid = Guid.NewGuid();
-			var socialProviderUid = Guid.NewGuid();
-			var socialId = Guid.NewGuid().ToString();
-			var token = "xpto-token";
+    public class SocialAccountEntityTest
+    {
+        [Fact]
+        public void CreateSocialAccount_WithValidParams_ResultObjectValidState()
+        {
+            var guid = Guid.NewGuid();
+            var userUid = Guid.NewGuid();
+            var socialProviderUid = Guid.NewGuid();
+            var socialId = Guid.NewGuid().ToString();
+            var token = "xpto-token";
 
             Action action = () => new SocialAccount(
-				guid,
-				userUid,
+                guid,
+                userUid,
                 socialProviderUid,
-				socialId,
-				token);
+                socialId,
+                token);
 
-			action.Should().NotThrow<DomainValidationException>();
-		}
+            action.Should().NotThrow<DomainValidationException>();
+        }
 
         [Fact]
         public void CreateSocialAccount_EmptySocialId_DomainValidationException()
