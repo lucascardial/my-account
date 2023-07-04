@@ -6,23 +6,23 @@ using MyAccount.Domain.Resources.Messages.Validations;
 
 namespace MyAccount.Tests.Unity.Entities
 {
-	public class UserEntityTest
-	{
-		[Fact]
-		public void CreateUser_WithValidParameters_ResultObjectValidState()
-		{
-			Action action = () => new User(
-				Guid.NewGuid(),
-				"User Name",
-				"user@mail.com",
-				"12345678");
+    public class UserEntityTest
+    {
+        [Fact]
+        public void CreateUser_WithValidParameters_ResultObjectValidState()
+        {
+            Action action = () => new User(
+                Guid.NewGuid(),
+                "User Name",
+                "user@mail.com",
+                "12345678");
 
-			action.Should().NotThrow<DomainValidationException>();
+            action.Should().NotThrow<DomainValidationException>();
         }
 
-		[Fact]
-		public void CreateUser_TooShortPassword_DomainValidationException()
-		{
+        [Fact]
+        public void CreateUser_TooShortPassword_DomainValidationException()
+        {
             Action action = () => new User(
                 Guid.NewGuid(),
                 "User Name",
@@ -31,12 +31,12 @@ namespace MyAccount.Tests.Unity.Entities
 
             var exception = Assert.Throws<DomainValidationException>(action);
 
-			exception.Errors.Should().Contain(UserValidationMessages.PasswordToShort);
+            exception.Errors.Should().Contain(UserValidationMessages.PasswordToShort);
         }
 
-		[Fact]
-		public void CreateUser_EmptyName_DomainValidationException()
-		{
+        [Fact]
+        public void CreateUser_EmptyName_DomainValidationException()
+        {
             Action action = () => new User(
                 Guid.NewGuid(),
                 "",
