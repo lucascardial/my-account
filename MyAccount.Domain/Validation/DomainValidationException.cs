@@ -26,7 +26,7 @@ namespace MyAccount.Domain.Validation
 
             foreach (var validation in validations)
             {
-                if (!validation.condition)
+                if (validation.condition)
                 {
                     errors.Add(validation.errorMessage);
                 }
