@@ -18,7 +18,7 @@ namespace MyAccount.Domain.Entities
 			Enabled = enabled;
 		}
 
-		private static void Validate(string name)
+		private void Validate(string name)
 		{
 			DomainValidationException.When(string.IsNullOrEmpty(name),
 				"O Nome do provedor social é obrigatório");

@@ -23,7 +23,7 @@ namespace MyAccount.Domain.Entities
             Token = token;
         }
 
-        private static void Validate(string socialId, string token)
+        private void Validate(string socialId, string token)
         {
             DomainValidationException.ValidateAll(new List<(bool condition, string errorMessage)>
             {
