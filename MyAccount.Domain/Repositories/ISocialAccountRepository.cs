@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MyAccount.Domain.Entities;
 
 namespace MyAccount.Domain.Repositories
@@ -7,7 +7,7 @@ namespace MyAccount.Domain.Repositories
 	{
 		public Task Create(SocialAccount socialAccount);
 		public Task Update(SocialAccount socialAccount);
-		public Task<List<SocialAccount>> FindUserSocialAccounts(User user);
+		public Task<IEnumerable<SocialAccount>> FindUserSocialAccounts(User user);
     }
 }
 

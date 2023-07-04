@@ -1,5 +1,4 @@
-﻿using System;
-namespace MyAccount.Domain.Resources.Messages.Validations
+﻿namespace MyAccount.Domain.Resources.Messages.Validations
 {
 	public static class UserValidationMessages
 	{
