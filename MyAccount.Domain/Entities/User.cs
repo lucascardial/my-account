@@ -1,4 +1,5 @@
-﻿using MyAccount.Domain.Validation;
+﻿using MyAccount.Domain.Resources.Messages.Validations;
+using MyAccount.Domain.Validation;
 using MyAccount.Domain.ValueObjects;
 
 namespace MyAccount.Domain.Entities
@@ -12,7 +13,7 @@ namespace MyAccount.Domain.Entities
         public string? Password { get; private set; }
         public PhoneNumber? PhoneNumber { get; private set; }
 
-        public User(Guid? guid, string name, string email, string? password, PhoneNumber? phoneNumber)
+        public User(Guid? guid, string name, string email, string? password = null, PhoneNumber? phoneNumber = null)
         {
             Validate(name, email, password);
 
@@ -27,14 +28,12 @@ namespace MyAccount.Domain.Entities
         {
             DomainValidationException.ValidateAll(new List<(bool condition, string errorMessage)>
             {
-                ( condition: string.IsNullOrEmpty(name),
-                    errorMessage: "Um Nome de usuário é obrigatório"),
+                (string.IsNullOrEmpty(name), UserValidationMessages.NameNullOrEmpty),
 
-                ( condition: string.IsNullOrEmpty(email),
-                    errorMessage: "O E-mail de usuário é obrigatório"),
+                (string.IsNullOrEmpty(email), UserValidationMessages.EmailNullOrEmpty),
 
-                ( condition: !string.IsNullOrEmpty(password) && password.Length < 8,
-                    errorMessage: "A senha deve conter ao menos 8 caractéres"),
+                (!string.IsNullOrEmpty(password) && password.Length < 8,
+                   UserValidationMessages.PasswordLength)
             });
         }
     }
