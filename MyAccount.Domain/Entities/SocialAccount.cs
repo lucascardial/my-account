@@ -1,4 +1,5 @@
 ﻿using System;
+using MyAccount.Domain.Resources.Messages.Validations;
 using MyAccount.Domain.Validation;
 
 namespace MyAccount.Domain.Entities
@@ -13,6 +14,8 @@ namespace MyAccount.Domain.Entities
 
         public SocialAccount(Guid guid, Guid userId, Guid socialProviderId, string socialId, string token)
         {
+            Validate(socialId, token);
+
             Guid = guid;
             UserId = userId;
             SocialProviderId = socialProviderId;
@@ -24,8 +27,8 @@ namespace MyAccount.Domain.Entities
         {
             DomainValidationException.ValidateAll(new List<(bool condition, string errorMessage)>
             {
-                (condition: string.IsNullOrEmpty(socialId), "O SocialId é obrigatório"),
-                (condition: string.IsNullOrEmpty(token), "O Token é obrigatório"),
+                (string.IsNullOrEmpty(socialId), SocialAccountValidationMessages.SocialIdNullOrEmpty),
+                (string.IsNullOrEmpty(token), SocialAccountValidationMessages.TokenNullOrEmpty),
             });
         }
     }
