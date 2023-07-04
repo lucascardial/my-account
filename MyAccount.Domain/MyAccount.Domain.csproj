@@ -15,11 +15,17 @@
     <None Remove="Validation\" />
     <None Remove="Policies\TodoListPolicy\" />
     <None Remove="Repositories\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Messages\" />
+    <None Remove="Resources\Messages\Validations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="ValueObjects\" />
     <Folder Include="Validation\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Messages\" />
+    <Folder Include="Resources\Messages\Validations\" />
   </ItemGroup>
 </Project>

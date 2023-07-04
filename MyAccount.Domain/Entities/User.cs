@@ -30,10 +30,12 @@ namespace MyAccount.Domain.Entities
             {
                 (string.IsNullOrEmpty(name), UserValidationMessages.NameNullOrEmpty),
 
+                (!string.IsNullOrEmpty(name) && name.Length < 5, UserValidationMessages.NameTooShort),
+
                 (string.IsNullOrEmpty(email), UserValidationMessages.EmailNullOrEmpty),
 
                 (!string.IsNullOrEmpty(password) && password.Length < 8,
-                   UserValidationMessages.PasswordLength)
+                   UserValidationMessages.PasswordToShort)
             });
         }
     }
