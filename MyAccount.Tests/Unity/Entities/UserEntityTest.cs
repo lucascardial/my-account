@@ -3,6 +3,7 @@ using MyAccount.Domain.Entities;
 using FluentAssertions;
 using MyAccount.Domain.Validation;
 using MyAccount.Domain.Resources.Messages.Validations;
+using Bogus;
 
 namespace MyAccount.Tests.Unity.Entities
 {
@@ -11,11 +12,18 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateUser_WithValidParameters_ResultObjectValidState()
         {
+            var fake = new Faker("pt_BR");
+
+            var id = fake.Random.Guid();
+            var name = fake.Person.FullName;
+            var email = fake.Person.Email;
+            var password = fake.Random.AlphaNumeric(8);
+            
             Action action = () => new User(
-                Guid.NewGuid(),
-                "User Name",
-                "user@mail.com",
-                "12345678");
+                id,
+                name,
+                email,
+                password);
 
             action.Should().NotThrow<DomainValidationException>();
         }
@@ -23,11 +31,18 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateUser_TooShortPassword_DomainValidationException()
         {
+            var fake = new Faker("pt_BR");
+            
+            var id = fake.Random.Guid();
+            var name = fake.Person.FullName;
+            var email = fake.Person.Email;
+            var password = fake.Random.AlphaNumeric(5);
+
             Action action = () => new User(
-                Guid.NewGuid(),
-                "User Name",
-                "user@mail.com",
-                "1234567");
+                id,
+                name,
+                email,
+                password);
 
             var exception = Assert.Throws<DomainValidationException>(action);
 
@@ -37,11 +52,17 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateUser_EmptyName_DomainValidationException()
         {
+            var fake = new Faker("pt_BR");
+
+            var id = fake.Random.Guid();
+            var name = fake.Random.AlphaNumeric(0);
+            var email = fake.Person.Email;
+            var password = fake.Random.AlphaNumeric(8);
             Action action = () => new User(
-                Guid.NewGuid(),
-                "",
-                "user@mail.com",
-                "12345678");
+                id,
+                name,
+                email,
+                password);
 
             var exception = Assert.Throws<DomainValidationException>(action);
 
@@ -51,11 +72,18 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateUser_TooShortName_DomainValidationException()
         {
+            var fake = new Faker("pt_BR");
+
+            var id = fake.Random.Guid();
+            var name = fake.Random.AlphaNumeric(4);
+            var email = fake.Person.Email;
+            var password = fake.Random.AlphaNumeric(8);
+
             Action action = () => new User(
-                Guid.NewGuid(),
-                "Name",
-                "user@mail.com",
-                "12345678");
+                id,
+                name,
+                email,
+                password);
 
             var exception = Assert.Throws<DomainValidationException>(action);
 
@@ -65,11 +93,18 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateUser_EmptyEmail_DomainValidationException()
         {
+            var fake = new Faker("pt_BR");
+
+            var id = fake.Random.Guid();
+            var name = fake.Person.FullName;
+            var email = fake.Random.AlphaNumeric(0);
+            var password = fake.Random.AlphaNumeric(8);
+
             Action action = () => new User(
-                Guid.NewGuid(),
-                "User Name",
-                "",
-                "12345678");
+                id,
+                name,
+                email,
+                password);
 
             var exception = Assert.Throws<DomainValidationException>(action);
 
