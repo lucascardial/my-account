@@ -1,5 +1,4 @@
-﻿using System;
-using MyAccount.Domain.Resources.Messages.Validations;
+﻿using MyAccount.Domain.Resources.Messages.Validations;
 using MyAccount.Domain.Validation;
 
 namespace MyAccount.Domain.Entities

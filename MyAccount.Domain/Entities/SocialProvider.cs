@@ -1,5 +1,4 @@
-﻿using System;
-using MyAccount.Domain.Validation;
+﻿using MyAccount.Domain.Validation;
 
 namespace MyAccount.Domain.Entities
 {

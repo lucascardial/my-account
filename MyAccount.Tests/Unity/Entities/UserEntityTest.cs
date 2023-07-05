@@ -1,5 +1,4 @@
-﻿using System;
-using MyAccount.Domain.Entities;
+﻿using MyAccount.Domain.Entities;
 using FluentAssertions;
 using MyAccount.Domain.Validation;
 using MyAccount.Domain.Resources.Messages.Validations;
