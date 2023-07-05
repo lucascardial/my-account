@@ -1,5 +1,4 @@
-﻿using System;
-using MyAccount.Domain.Entities;
+﻿using MyAccount.Domain.Entities;
 
 namespace MyAccount.Domain.Repositories
 {

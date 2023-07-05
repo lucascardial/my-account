@@ -24,7 +24,7 @@ namespace MyAccount.Domain.Entities
             PhoneNumber = phoneNumber;
         }
 
-        private static void Validate(string name, string email, string? password)
+        private void Validate(string name, string email, string? password)
         {
             DomainValidationException.ValidateAll(new List<(bool condition, string errorMessage)>
             {

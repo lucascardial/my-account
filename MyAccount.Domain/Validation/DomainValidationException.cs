@@ -1,5 +1,4 @@
-﻿using System;
-namespace MyAccount.Domain.Validation
+﻿namespace MyAccount.Domain.Validation
 {
     public class DomainValidationException : Exception
     {
