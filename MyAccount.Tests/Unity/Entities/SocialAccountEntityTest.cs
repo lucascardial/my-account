@@ -8,19 +8,17 @@ namespace MyAccount.Tests.Unity.Entities
 {
     public class SocialAccountEntityTest
     {
+        private Faker fake = new Faker("pt_BR");
+
         [Fact]
         public void CreateSocialAccount_WithValidParams_ResultObjectValidState()
         {
-            var fake = new Faker("pt_BR");
-
-            var guid = fake.Random.Guid();
             var userUid = fake.Random.Guid();
             var socialProviderUid = fake.Random.Guid();
             var socialId = fake.Random.AlphaNumeric(36);
             var token = "xpto-token";
 
             Action action = () => new SocialAccount(
-                guid,
                 userUid,
                 socialProviderUid,
                 socialId,
@@ -32,16 +30,13 @@ namespace MyAccount.Tests.Unity.Entities
         [Fact]
         public void CreateSocialAccount_EmptySocialId_DomainValidationException()
         {
-            var fake = new Faker("pt_BR");
 
-            var guid = fake.Random.Guid();
             var userUid = fake.Random.Guid();
             var socialProviderUid = fake.Random.Guid();
             var socialId = "";
             var token = "xpto-token";
 
             Action action = () => new SocialAccount(
-                guid,
                 userUid,
                 socialProviderUid,
                 socialId,
@@ -60,14 +55,12 @@ namespace MyAccount.Tests.Unity.Entities
         {
             var fake = new Faker("pt_BR");
 
-            var guid = fake.Random.Guid();
             var userUid = fake.Random.Guid();
             var socialProviderUid = fake.Random.Guid();
             var socialId = fake.Random.AlphaNumeric(36);
             var token = "";
 
             Action action = () => new SocialAccount(
-                guid,
                 userUid,
                 socialProviderUid,
                 socialId,
