@@ -3,19 +3,17 @@ using MyAccount.Domain.Validation;
 
 namespace MyAccount.Domain.Entities
 {
-	public class SocialAccount
+	public class SocialAccount : Entity
 	{
-		public Guid Guid { get; private set; }
 		public Guid UserId { get; private set; }
 		public Guid SocialProviderId { get; private set; }
 		public string SocialId { get; private set; }
 		public string Token { get; private set; }
 
-        public SocialAccount(Guid guid, Guid userId, Guid socialProviderId, string socialId, string token)
+        public SocialAccount(Guid userId, Guid socialProviderId, string socialId, string token)
         {
             Validate(socialId, token);
 
-            Guid = guid;
             UserId = userId;
             SocialProviderId = socialProviderId;
             SocialId = socialId;

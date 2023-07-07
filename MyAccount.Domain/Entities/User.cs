@@ -4,20 +4,17 @@ using MyAccount.Domain.ValueObjects;
 
 namespace MyAccount.Domain.Entities
 {
-	public class User
+	public class User : Entity
 	{
-
-        public Guid Guid { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string? Password { get; private set; }
         public PhoneNumber? PhoneNumber { get; private set; }
 
-        public User(Guid? guid, string name, string email, string? password = null, PhoneNumber? phoneNumber = null)
+        public User(string name, string email, string? password = null, PhoneNumber? phoneNumber = null)
         {
             Validate(name, email, password);
 
-            Guid = guid ?? Guid.NewGuid();
             Name = name;
             Email = email;
             Password = password;
