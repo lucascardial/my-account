@@ -8,12 +8,12 @@
 
         public DomainValidationException(string error, List<string>? errors = null) : base(error)
         {
-            Errors = errors ?? new List<string>();
+            Errors = errors ?? new List<string> { error };
         }
 
         public static void When(bool validation, string errorMessage)
         {
-            if (!validation)
+            if (validation)
             {
                 throw new DomainValidationException(errorMessage);
             }
